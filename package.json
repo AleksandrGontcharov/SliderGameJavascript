@@ -14,7 +14,9 @@
     },
     "author": "",
     "license": "MIT",
-    "dependencies": {},
+    "dependencies": {
+        "pixi.js": "^6.3.2"
+    },
     "devDependencies": {
         "@babel/core": "^7.15.8",
         "@babel/plugin-transform-runtime": "^7.15.8",
