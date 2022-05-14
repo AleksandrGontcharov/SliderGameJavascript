@@ -1,0 +1,15 @@
+#root{
+    margin: 45px 25% 0 25%;
+    font-size: 42px;
+    text-align: center;
+    padding:100px;
+    background-color: lightgray;
+}
+
+#root::after{
+    background: url('../assets/demo.png');
+    width:100px;
+    height:100px;
+    content:'';
+    display:inline-block;
+}
