@@ -38,7 +38,6 @@ export class Slider {
         if (this.currPosition == this.height || !this.direction) {
             this.currPosition = this.currPosition - 1;
             this.constructorHelper(this.height, this.currPosition, false);
-
         } else if (this.currPosition == 1 || this.direction) {
             this.currPosition = this.currPosition + 1;
             this.constructorHelper(this.height, this.currPosition, true);

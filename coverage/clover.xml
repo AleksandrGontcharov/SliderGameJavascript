@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1652581110097" clover="3.2.0">
+  <project timestamp="1652581110097" name="All files">
+    <metrics statements="31" coveredstatements="31" conditionals="20" coveredconditionals="19" methods="6" coveredmethods="6" elements="57" coveredelements="56" complexity="0" loc="31" ncloc="31" packages="1" files="2" classes="2"/>
+    <file name="Slider.js" path="C:\Users\agontcharov\Documents\repos\SliderGameJavascript\src\Game\Slider.js">
+      <metrics statements="20" coveredstatements="20" conditionals="16" coveredconditionals="15" methods="3" coveredmethods="3"/>
+      <line num="5" count="27" type="stmt"/>
+      <line num="9" count="44" type="cond" truecount="2" falsecount="0"/>
+      <line num="11" count="6" type="stmt"/>
+      <line num="12" count="6" type="stmt"/>
+      <line num="14" count="38" type="cond" truecount="2" falsecount="0"/>
+      <line num="16" count="7" type="stmt"/>
+      <line num="17" count="7" type="stmt"/>
+      <line num="21" count="44" type="cond" truecount="2" falsecount="0"/>
+      <line num="23" count="2" type="stmt"/>
+      <line num="25" count="44" type="cond" truecount="2" falsecount="0"/>
+      <line num="27" count="2" type="stmt"/>
+      <line num="30" count="44" type="stmt"/>
+      <line num="31" count="44" type="stmt"/>
+      <line num="32" count="44" type="stmt"/>
+      <line num="38" count="17" type="cond" truecount="4" falsecount="0"/>
+      <line num="39" count="6" type="stmt"/>
+      <line num="40" count="6" type="stmt"/>
+      <line num="41" count="11" type="cond" truecount="3" falsecount="1"/>
+      <line num="42" count="11" type="stmt"/>
+      <line num="43" count="11" type="stmt"/>
+    </file>
+    <file name="Stage.js" path="C:\Users\agontcharov\Documents\repos\SliderGameJavascript\src\Game\Stage.js">
+      <metrics statements="11" coveredstatements="11" conditionals="4" coveredconditionals="4" methods="3" coveredmethods="3"/>
+      <line num="4" count="4" type="stmt"/>
+      <line num="9" count="4" type="stmt"/>
+      <line num="11" count="16" type="cond" truecount="2" falsecount="0"/>
+      <line num="12" count="12" type="stmt"/>
+      <line num="19" count="3" type="stmt"/>
+      <line num="20" count="3" type="stmt"/>
+      <line num="22" count="3" type="stmt"/>
+      <line num="24" count="9" type="cond" truecount="2" falsecount="0"/>
+      <line num="26" count="2" type="stmt"/>
+      <line num="27" count="2" type="stmt"/>
+      <line num="31" count="1" type="stmt"/>
+    </file>
+  </project>
+</coverage>

@@ -68,3 +68,12 @@ test('Slider4 Next Tests', () => {
     expect(slider4.currPosition).toBe(2);
     expect(slider4.direction).toBe(true);
 });
+
+
+test('Slider5 Next Tests', () => {
+
+  let slider5 = new Slider(5, 2, false);
+  slider5.Next();
+  expect(slider5.currPosition).toBe(1);
+  expect(slider5.direction).toBe(true);
+});
