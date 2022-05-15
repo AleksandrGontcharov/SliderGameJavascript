@@ -6,6 +6,7 @@
     "scripts": {
         "build": "npm run clean && npm run lint && npm run dist",
         "dist": "webpack --config webpack.prod.js",
+        "test": "jest",
         "start": "webpack serve --config webpack.dev.js",
         "clean": "del-cli dist/bundle.js dist/bundle.js.map dist/bundle.js.LICENSE.txt dist/images dist/fonts dist/static *.tgz",
         "lint": "eslint ./src --ext .js,.jsx",
@@ -25,6 +26,7 @@
         "css-loader": "^6.5.0",
         "del-cli": "^4.0.1",
         "eslint": "^8.1.0",
+        "jest": "^28.1.0",
         "sass-loader": "^12.3.0",
         "style-loader": "^3.2.1",
         "webpack": "^5.60.0",
