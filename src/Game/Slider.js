@@ -1,29 +1,22 @@
-
-
 export class Slider {
   constructor(height, currPosition, direction) {
       this.constructorHelper(height, currPosition, direction);
   }
 
   constructorHelper(height, currPosition, direction) {
-      if (currPosition >= height)
-      {
+      if (currPosition >= height) {
           currPosition = height;
           direction = false;
-      }
-      else if (currPosition <= 1)
-      {
+      } else if (currPosition <= 1) {
           currPosition = 1;
           direction = true;
       }
 
       // If currPosition and direction are not provided then generate them
-      if (currPosition == undefined)
-      {
+      if (currPosition == undefined) {
           currPosition = Math.floor(Math.random() * (height))  + 1;
       }
-      if (direction == undefined)
-      {
+      if (direction == undefined) {
         direction = Math.random() * 2 < 1;
       }
 
