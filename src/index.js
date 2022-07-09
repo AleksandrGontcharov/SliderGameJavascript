@@ -3,6 +3,8 @@ const { Slider } = require('./Game/Slider');
 const { Stage } = require('./Game/Stage');
 import { drawBackground,windowHeight, windowWidth } from './Game/background';
 import { Game } from './Game/Game';
+import { drawArrow } from './Game/helpers'
+
  
 const Application = PIXI.Application;
 const app = new Application({ width: 500, 
@@ -59,12 +61,37 @@ let game = new Game(listOfStages);
 
 
 // Stage 1
-
+console.log(stage1.listOfSliders)
 // draw the stage setting 
-let stageSettingItems = stage1.drawSetting();
+let stageSettingItems = stage2.drawSetting();
 
 stageSettingItems.forEach((item) => app.stage.addChild(item))
 // draw the arrows
-let stageArrowItems = stage1.drawArrows();
+let stageArrowItems = stage2.drawArrows();
 
-stageArrowItems.forEach((item) => app.stage.addChild(item))
+stageArrowItems.forEach((item) => {app.stage.addChild(item);
+                                   item.interactive = true;
+                                   item.buttonMode = true;
+                                    });
+
+
+function defineCallbacks(stage, stageArrowItems) {
+  stageArrowItems.forEach((item, index) => {
+    item.on('pointerdown', function() {
+      stage.ExecuteTurn(index);
+      // Remove all arrows
+      stageArrowItems.forEach((item, _) => {
+          app.stage.removeChild(item);
+      });
+      // redraw the arrows
+      let newStageArrowItems = stage.drawArrows();
+      newStageArrowItems.forEach((item) => {app.stage.addChild(item);
+                                        item.interactive = true;
+                                        item.buttonMode = true;
+                                          });
+      defineCallbacks(stage, newStageArrowItems)
+    });
+  });
+}
+
+defineCallbacks(stage2, stageArrowItems)

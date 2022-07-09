@@ -11,12 +11,11 @@ export class Stage
     }
 
     ExecuteTurn(index) {
-        for (let i = 0; i < this.listOfSliders.length; i++)
-        {
-            if ((index - 1) != i) { 
-                this.listOfSliders[i].Next();
+        this.listOfSliders.forEach((slider,i) => {
+            if (index != i) {
+                slider.Next()
             }
-        }
+        })
     }
 
 
