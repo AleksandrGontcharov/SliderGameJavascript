@@ -73,4 +73,21 @@ export class Stage
 
         return result
     }
+
+    getArrowsPositions() {
+        let result = [];
+
+        this.listOfSliders.forEach((slider, i) => {
+            let x_c = (margin_x + ((1 - 2*margin_x)/(this.numberOfSliders + 1))*(i + 1))*windowWidth;
+            // let y_c = (1 - (margin_y +  slider_padding + (1 / (slider.height + 1 ))*slider.currPosition)) * windowHeight;
+            let slider_rectangle_height = ((1 - 2*margin_y) - 2*slider_padding);
+            let y_c = ((1 - (margin_y +  slider_padding)) * windowHeight)  - (slider_rectangle_height / (slider.height + 1))*windowHeight * (slider.currPosition);
+
+    
+            result.push([x_c,y_c]);
+        });
+
+        return result
+    }
+
 }

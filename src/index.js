@@ -68,30 +68,54 @@ let stageSettingItems = stage2.drawSetting();
 stageSettingItems.forEach((item) => app.stage.addChild(item))
 // draw the arrows
 let stageArrowItems = stage2.drawArrows();
-
-stageArrowItems.forEach((item) => {app.stage.addChild(item);
-                                   item.interactive = true;
-                                   item.buttonMode = true;
-                                    });
+let stageArrowPositions = stage2.getArrowsPositions();
 
 
-function defineCallbacks(stage, stageArrowItems) {
-  stageArrowItems.forEach((item, index) => {
+function getSpritesFromGraphics(listOfGraphics) {
+  let result = [];
+  listOfGraphics.forEach((item) => {
+
+    let texture = app.renderer.generateTexture(item);
+    let sprite = new PIXI.Sprite(texture);
+
+    result.push(sprite);
+  })
+  return result;
+}                   
+
+let stageArrowSprites = getSpritesFromGraphics(stageArrowItems);
+
+stageArrowSprites.forEach((item, index) => {app.stage.addChild(item);
+  item.anchor.x = 0.5;
+  item.anchor.y = 0.5;
+  item.position.x = stageArrowPositions[index][0];
+  item.position.y = stageArrowPositions[index][1];
+  item.interactive = true;
+  item.buttonMode = true;
+   });
+
+
+
+function defineCallbacks(stage, stageArrowSprites) {
+  stageArrowSprites.forEach((item, index) => {
     item.on('pointerdown', function() {
       stage.ExecuteTurn(index);
       // Remove all arrows
-      stageArrowItems.forEach((item, _) => {
-          app.stage.removeChild(item);
+      stageArrowSprites.forEach((item, index2) => {
+        if (index != index2) {
+            let newStageArrowPositions = stage.getArrowsPositions();
+            item.position.y = newStageArrowPositions[index2][1];
+            if (stage.listOfSliders[index2].currPosition == stage.listOfSliders[index2].height) {
+                item.rotation += 3.14159;
+              }
+            if (stage.listOfSliders[index2].currPosition == 1) {
+                item.rotation += 3.14159;
+              }
+        }
+
       });
-      // redraw the arrows
-      let newStageArrowItems = stage.drawArrows();
-      newStageArrowItems.forEach((item) => {app.stage.addChild(item);
-                                        item.interactive = true;
-                                        item.buttonMode = true;
-                                          });
-      defineCallbacks(stage, newStageArrowItems)
     });
   });
 }
 
-defineCallbacks(stage2, stageArrowItems)
+defineCallbacks(stage2, stageArrowSprites)
