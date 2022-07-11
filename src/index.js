@@ -1,21 +1,22 @@
 var PIXI = require('pixi.js');
 const { Slider } = require('./Game/Slider');
 const { Stage } = require('./Game/Stage');
-import { drawBackground,windowHeight, windowWidth } from './Game/background';
+import { drawBackground } from './Game/background';
+import { windowHeight, windowWidth } from './Game/helpers';
 import { Game } from './Game/Game';
 import { drawArrow } from './Game/helpers'
 
- 
+
 const Application = PIXI.Application;
-const app = new Application({ width: 500, 
-                              height: 500, 
-                              transparent: false,
-                              antialias: true});
-
-
+const app = new Application({
+  width: 500,
+  height: 500,
+  transparent: false,
+  antialias: true
+});
 
 app.renderer.backgroundColor = 0x060812;
-
+ 
 app.renderer.resize(windowWidth, windowHeight);
 
 app.renderer.view.style.position = "absolute";
@@ -41,22 +42,22 @@ let stage2_slider3 = new Slider(7, 7, false);
 let stage2_slider4 = new Slider(7, 5, false);
 let stage2 = new Stage([stage2_slider1, stage2_slider2, stage2_slider3, stage2_slider4]);
 
-let listOfStages = [stage1,stage2];
+let listOfStages = [stage1, stage2];
 
 let game = new Game(listOfStages);
 
 // Begin game
 
 // game.listOfStages.forEach(
-  // for each stage we
-  // draw the stage setting 
+// for each stage we
+// draw the stage setting 
 
-  // draw the arrows
-  
-  // do a while loop until the person wins
+// draw the arrows
 
-  // delete the stage setting and arrows
-  // move on to next stage
+// do a while loop until the person wins
+
+// delete the stage setting and arrows
+// move on to next stage
 // )
 
 
@@ -70,7 +71,6 @@ stageSettingItems.forEach((item) => app.stage.addChild(item))
 let stageArrowItems = stage2.drawArrows();
 let stageArrowPositions = stage2.getArrowsPositions();
 
-
 function getSpritesFromGraphics(listOfGraphics) {
   let result = [];
   listOfGraphics.forEach((item) => {
@@ -81,36 +81,36 @@ function getSpritesFromGraphics(listOfGraphics) {
     result.push(sprite);
   })
   return result;
-}                   
+}
 
 let stageArrowSprites = getSpritesFromGraphics(stageArrowItems);
 
-stageArrowSprites.forEach((item, index) => {app.stage.addChild(item);
+stageArrowSprites.forEach((item, index) => {
+  app.stage.addChild(item);
   item.anchor.x = 0.5;
   item.anchor.y = 0.5;
   item.position.x = stageArrowPositions[index][0];
   item.position.y = stageArrowPositions[index][1];
   item.interactive = true;
   item.buttonMode = true;
-   });
-
+});
 
 
 function defineCallbacks(stage, stageArrowSprites) {
   stageArrowSprites.forEach((item, index) => {
-    item.on('pointerdown', function() {
+    item.on('pointerdown', function () {
       stage.ExecuteTurn(index);
       // Remove all arrows
       stageArrowSprites.forEach((item, index2) => {
         if (index != index2) {
-            let newStageArrowPositions = stage.getArrowsPositions();
-            item.position.y = newStageArrowPositions[index2][1];
-            if (stage.listOfSliders[index2].currPosition == stage.listOfSliders[index2].height) {
-                item.rotation += 3.14159;
-              }
-            if (stage.listOfSliders[index2].currPosition == 1) {
-                item.rotation += 3.14159;
-              }
+          let newStageArrowPositions = stage.getArrowsPositions();
+          item.position.y = newStageArrowPositions[index2][1];
+          if (stage.listOfSliders[index2].currPosition == stage.listOfSliders[index2].height) {
+            item.rotation += 3.14159;
+          }
+          if (stage.listOfSliders[index2].currPosition == 1) {
+            item.rotation += 3.14159;
+          }
         }
 
       });
@@ -118,4 +118,4 @@ function defineCallbacks(stage, stageArrowSprites) {
   });
 }
 
-defineCallbacks(stage2, stageArrowSprites)
+defineCallbacks(stage2, stageArrowSprites);
