@@ -1,8 +1,7 @@
 import { drawRectangle, drawArrow } from './helpers';
-import { windowHeight, windowWidth, margin_x, margin_y } from './helpers';
+import { windowHeight, windowWidth, margin_x, margin_y, slider_padding } from './helpers';
 
 
-let slider_padding = 0.025;
 export class Stage {
     constructor(listOfSliders) {
         this.listOfSliders = listOfSliders;
