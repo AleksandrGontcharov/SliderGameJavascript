@@ -2,9 +2,10 @@ var PIXI = require('pixi.js');
 const { Slider } = require('./Game/Slider');
 const { Stage } = require('./Game/Stage');
 import { drawBackground } from './Game/background';
-import { windowHeight, windowWidth, margin_y, slider_padding } from './Game/helpers';
-import { animateArrow1, defineCallbacks, getSpritesFromGraphics, placeArrowSprites } from './Game/animation'
+import { windowHeight, windowWidth, margin_y, margin_x, slider_padding, drawRectangle, drawArrow } from './Game/helpers';
+import { animateArrow1, defineCallbacks, getSpritesFromGraphics, placeArrowSprites, drawSetting, getArrowPositions, generateStageSetting, generateStageArrows, startGame } from './Game/graphicsHelpers'
 import { Game } from './Game/Game';
+
 
 const Application = PIXI.Application;
 const app = new Application({
@@ -38,45 +39,19 @@ let stage2_slider3 = new Slider(7, 7, false);
 let stage2_slider4 = new Slider(7, 5, false);
 let stage2 = new Stage([stage2_slider1, stage2_slider2, stage2_slider3, stage2_slider4]);
 
-let listOfStages = [stage1, stage2];
+let stage3_slider1 = new Slider(11, 1, false);
+let stage3_slider2 = new Slider(11, 2, false);
+let stage3_slider3 = new Slider(11, 5, false);
+let stage3_slider4 = new Slider(11, 4, false);
+let stage3_slider5 = new Slider(11, 9, false);
+let stage3 = new Stage([stage3_slider1, stage3_slider2, stage3_slider3, stage3_slider5]);
+
+
+
+let listOfStages = [stage1, stage2, stage3];
 
 let game = new Game(listOfStages);
 
 // Begin game
 
-// game.listOfStages.forEach(
-// for each stage we
-// draw the stage setting 
-
-// draw the arrows
-
-// do a while loop until the person wins
-
-// delete the stage setting and arrows
-// move on to next stage
-// )
-
-
-// Stage 1
-// draw the stage setting 
-let stageSettingItems = stage2.drawSetting();
-
-stageSettingItems.forEach((item) => app.stage.addChild(item))
-// draw the arrows
-let stageArrowItems = stage2.drawArrows();
-let stageArrowPositions = stage2.getArrowsPositions();
-let stageArrowSprites = getSpritesFromGraphics(stageArrowItems, app.renderer);
-
-
-placeArrowSprites(stageArrowSprites, stageArrowPositions, app.stage)
-
-// add animation to sprites
-app.ticker.add(() => {
-  animateArrow1(stageArrowSprites, stage2);
-});
-
-defineCallbacks(stage2, stageArrowSprites);
-
-if (stage2.IsWinning()) {
-
-}
+startGame(game, 0, app)
