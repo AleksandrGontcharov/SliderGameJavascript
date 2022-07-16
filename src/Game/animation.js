@@ -1,3 +1,6 @@
+var PIXI = require('pixi.js');
+
+
 import { windowHeight, windowWidth, margin_x, margin_y, slider_padding } from './helpers';
 
 
@@ -46,5 +49,30 @@ export function defineCallbacks(stage, stageArrowSprites) {
     item.on('pointerdown', function () {
       stage.ExecuteTurn(index);
     });
+  });
+}
+
+
+export function getSpritesFromGraphics(listOfGraphics, renderer) {
+  let result = [];
+  listOfGraphics.forEach((item) => {
+
+    let texture = renderer.generateTexture(item);
+    let sprite = new PIXI.Sprite(texture);
+
+    result.push(sprite);
+  })
+  return result;
+}
+
+export function placeArrowSprites(stageArrowSprites, stageArrowPositions, app_stage) {
+  stageArrowSprites.forEach((item, index) => {
+    app_stage.addChild(item);
+    item.anchor.x = 0.5;
+    item.anchor.y = 0.5;
+    item.position.x = stageArrowPositions[index][0];
+    item.position.y = stageArrowPositions[index][1];
+    item.interactive = true;
+    item.buttonMode = true;
   });
 }

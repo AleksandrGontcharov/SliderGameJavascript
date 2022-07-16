@@ -2,8 +2,8 @@ var PIXI = require('pixi.js');
 const { Slider } = require('./Game/Slider');
 const { Stage } = require('./Game/Stage');
 import { drawBackground } from './Game/background';
-import { windowHeight, windowWidth, margin_y, slider_padding, getSpritesFromGraphics, placeArrowSprites } from './Game/helpers';
-import { animateArrow1, defineCallbacks } from './Game/animation'
+import { windowHeight, windowWidth, margin_y, slider_padding } from './Game/helpers';
+import { animateArrow1, defineCallbacks, getSpritesFromGraphics, placeArrowSprites } from './Game/animation'
 import { Game } from './Game/Game';
 
 const Application = PIXI.Application;
@@ -76,3 +76,7 @@ app.ticker.add(() => {
 });
 
 defineCallbacks(stage2, stageArrowSprites);
+
+if (stage2.IsWinning()) {
+
+}
