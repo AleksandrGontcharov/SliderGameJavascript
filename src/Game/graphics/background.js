@@ -6,6 +6,7 @@ import { margin_x, margin_y, windowHeight, windowWidth } from './windowLayout';
 export function heightPosition(percent) {
   return percent * windowHeight;
 }
+
 export function widthPosition(percent) {
   return percent * windowWidth;
 }

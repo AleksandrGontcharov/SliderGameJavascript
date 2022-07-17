@@ -41,7 +41,6 @@ export function drawArrow(x_c, y_c, width, height, fillColor, sliderDirection) {
   return arrow;
 }
 
-
 export function animateArrow1(stageArrowSprites, stage) {
   stageArrowSprites.forEach((item, index) => {
     let currentSpritePosition = getCurrPositionFromSprite(item, stage, index);
@@ -81,7 +80,6 @@ function getCurrPositionFromSprite(sprite, stage, indexOfSlider) {
   return result;
 }
 
-
 export function getSpritesFromGraphics(listOfGraphics, renderer) {
   let result = [];
   listOfGraphics.forEach((item) => {
@@ -120,7 +118,6 @@ export function undrawArrowSprites(stageArrowSprites, app) {
   });
 }
 
-
 export function getArrowPositions(stage) {
   let result = [];
 
@@ -135,7 +132,6 @@ export function getArrowPositions(stage) {
 
   return result;
 }
-
 
 export function generateStageSetting(stage) {
   let result = [];
@@ -153,7 +149,6 @@ export function generateStageSetting(stage) {
 
   return result;
 }
-
 
 export function generateStageArrows(stage) {
   let result = [];
@@ -207,8 +202,6 @@ export function startGame(game, stage_number, app) {
     });
   });
 }
-
-
 
 export function defineCallbacks(stage, stageArrowSprites) {
   stageArrowSprites.forEach((item, index) => {
