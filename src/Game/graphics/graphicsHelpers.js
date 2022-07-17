@@ -32,7 +32,7 @@ export function animateArrow1(stageArrowSprites, stage) {
         }
       }
     }
-  })
+  });
 }
 
 function getCurrPositionFromSprite(sprite, stage, indexOfSlider) {
@@ -53,7 +53,7 @@ export function getSpritesFromGraphics(listOfGraphics, renderer) {
     let sprite = new PIXI.Sprite(texture);
 
     result.push(sprite);
-  })
+  });
   return result;
 }
 
@@ -78,7 +78,7 @@ export function drawArrowSprites(stageArrowSprites, stageArrowPositions, app_sta
 }
 
 export function undrawArrowSprites(stageArrowSprites, app) {
-  stageArrowSprites.forEach((item, index) => {
+  stageArrowSprites.forEach((item) => {
     app.stage.removeChild(item);
   });
 }
@@ -96,7 +96,7 @@ export function getArrowPositions(stage) {
     result.push([x_c, y_c]);
   });
 
-  return result
+  return result;
 }
 
 
@@ -132,11 +132,11 @@ export function generateStageArrows(stage) {
     result.push(triangle);
   });
 
-  return result
+  return result;
 }
 
 export function startGame(game, stage_number, app) {
-  let stage = game.listOfStages[stage_number]
+  let stage = game.listOfStages[stage_number];
   let stageSettingItems = generateStageSetting(stage);
   drawSetting(stageSettingItems, app.stage);
 
@@ -156,14 +156,14 @@ export function startGame(game, stage_number, app) {
     item.on('pointerdown', function () {
       stage.ExecuteTurn(index);
       if (stage.IsWinning()) {
-        console.log("you beat stage " + (stage_number + 1));
+        console.log('you beat stage ' + (stage_number + 1));
         undrawSetting(stageSettingItems, app);
         undrawArrowSprites(stageArrowSprites, app);
         if ((stage_number + 1) < game.listOfStages.length) {
-          startGame(game, stage_number + 1, app)
+          startGame(game, stage_number + 1, app);
         }
         else {
-          console.log("you beat the entire game")
+          console.log('you beat the entire game');
         }
 
       }
@@ -178,7 +178,7 @@ export function defineCallbacks(stage, stageArrowSprites) {
     item.on('pointerdown', function () {
       stage.ExecuteTurn(index);
       if (stage.IsWinning()) {
-        console.log("you win");
+        console.log('you win');
       }
     });
   });
