@@ -1,6 +1,6 @@
 var PIXI = require('pixi.js');
-const { Slider } = require('./Game/Slider');
-const { Stage } = require('./Game/Stage');
+const { Slider } = require('./Game/classes/Slider');
+const { Stage } = require('./Game/classes/Stage');
 import { drawBackground } from './Game/graphics/background';
 import { windowHeight, windowWidth } from './Game/graphics/windowLayout';
 import { startGame } from './Game/graphics/stage';
