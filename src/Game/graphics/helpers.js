@@ -1,4 +1,4 @@
-var PIXI = require("pixi.js");
+var PIXI = require('pixi.js');
 
 export function drawRectangle(x_c, y_c, width, height, fillColor) {
   const Graphics = PIXI.Graphics;
