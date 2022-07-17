@@ -14,13 +14,13 @@ export class Slider {
 
         // If currPosition and direction are not provided then generate them
         if (currPosition == undefined) {
-            currPosition = Math.floor(Math.random() * (height)) + 1;
+            currPosition = Math.floor(Math.random() * height) + 1;
         }
 
         if (direction == undefined) {
             direction = Math.random() * 2 < 1;
         }
-        
+
         this.height = height;
         this.currPosition = currPosition;
         this.direction = direction;

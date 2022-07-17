@@ -114,7 +114,7 @@ export function generateStageSetting(stage) {
     result.push(rectangle);
   });
 
-  return result
+  return result;
 }
 
 

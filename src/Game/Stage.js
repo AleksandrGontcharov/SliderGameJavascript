@@ -9,7 +9,7 @@ export class Stage {
             if (index != i) {
                 slider.Next();
             }
-        })
+        });
     }
 
     IsWinning() {

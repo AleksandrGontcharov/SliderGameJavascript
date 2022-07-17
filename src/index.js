@@ -2,8 +2,8 @@ var PIXI = require('pixi.js');
 const { Slider } = require('./Game/Slider');
 const { Stage } = require('./Game/Stage');
 import { drawBackground } from './Game/background';
-import { windowHeight, windowWidth, margin_y, margin_x, slider_padding, drawRectangle, drawArrow } from './Game/helpers';
-import { animateArrow1, defineCallbacks, getSpritesFromGraphics, placeArrowSprites, drawSetting, getArrowPositions, generateStageSetting, generateStageArrows, startGame } from './Game/graphicsHelpers'
+import { windowHeight, windowWidth } from './Game/helpers';
+import { startGame } from './Game/graphicsHelpers'
 import { Game } from './Game/Game';
 
 
@@ -44,7 +44,7 @@ let stage3_slider2 = new Slider(11, 2, false);
 let stage3_slider3 = new Slider(11, 5, false);
 let stage3_slider4 = new Slider(11, 4, false);
 let stage3_slider5 = new Slider(11, 9, false);
-let stage3 = new Stage([stage3_slider1, stage3_slider2, stage3_slider3, stage3_slider5]);
+let stage3 = new Stage([stage3_slider1, stage3_slider2, stage3_slider3, stage3_slider4, stage3_slider5]);
 
 
 
@@ -54,4 +54,4 @@ let game = new Game(listOfStages);
 
 // Begin game
 
-startGame(game, 0, app)
+startGame(game, 0, app);
