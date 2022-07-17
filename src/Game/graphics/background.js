@@ -1,8 +1,14 @@
 var PIXI = require('pixi.js');
 import { GlowFilter } from '@pixi/filter-glow';
 
-import { widthPosition, heightPosition, margin_x, margin_y } from './helpers';
+import { margin_x, margin_y, windowHeight, windowWidth } from './windowLayout';
 
+export function heightPosition(percent) {
+  return percent * windowHeight;
+}
+export function widthPosition(percent) {
+  return percent * windowWidth;
+}
 
 export function drawBackground() {
   const Graphics = PIXI.Graphics;
@@ -28,15 +34,10 @@ export function drawBackground() {
     .moveTo(widthPosition(1 - margin_x), heightPosition(margin_y))
     .lineTo(widthPosition(1 - margin_x), heightPosition(1 - margin_y));
 
-  // const texture = renderer.generateTexture(topLine);
-  // const topLineSprite = new PIXI.Sprite(texture);
-  // App.stage.addChild(topLineSprite);
   rightLine.filters = [new GlowFilter()];
   topLine.filters = [new GlowFilter()];
   bottomLine.filters = [new GlowFilter()];
   leftLine.filters = [new GlowFilter()];
-
-
 
   return [topLine, bottomLine, leftLine, rightLine];
 }

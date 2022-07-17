@@ -2,7 +2,7 @@ var PIXI = require('pixi.js');
 const { Slider } = require('./Game/Slider');
 const { Stage } = require('./Game/Stage');
 import { drawBackground } from './Game/graphics/background';
-import { windowHeight, windowWidth } from './Game/graphics/helpers';
+import { windowHeight, windowWidth } from './Game/graphics/windowLayout';
 import { startGame } from './Game/graphics/graphicsHelpers';
 import { Game } from './Game/Game';
 
