@@ -13,6 +13,9 @@
         "lint:fix": "eslint ./src --ext .js,.jsx --fix",
         "prepack": "npm run clean && npm run dist"
     },
+    "jest": {
+        "verbose": true
+      },
     "author": "",
     "license": "MIT",
     "dependencies": {
