@@ -4,7 +4,7 @@ const { Stage } = require('./Game/classes/Stage');
 import { drawBackground } from './Game/graphics/background';
 import { windowHeight, windowWidth } from './Game/graphics/windowLayout';
 import { startGame } from './Game/graphics/stage';
-import { Game } from './Game/Game';
+import { Game } from './Game/classes/Game';
 
 
 const Application = PIXI.Application;
