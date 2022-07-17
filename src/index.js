@@ -17,13 +17,13 @@ const app = new Application({
 
 app.renderer.backgroundColor = 0x060812;
 app.renderer.resize(windowWidth, windowHeight);
-app.renderer.view.style.position = "absolute";
+app.renderer.view.style.position = 'absolute';
 document.body.appendChild(app.view);
 
 // Render the background
 
 let backgroundItems = drawBackground();
-backgroundItems.forEach((item) => app.stage.addChild(item))
+backgroundItems.forEach((item) => app.stage.addChild(item));
 
 // Define the game here
 
