@@ -2,7 +2,7 @@ import { windowHeight, windowWidth, margin_y, margin_x, slider_padding } from '.
 
 var PIXI = require('pixi.js');
 
-export function drawRectangle(x_c, y_c, width, height, fillColor) {
+function drawRectangle(x_c, y_c, width, height, fillColor) {
   const Graphics = PIXI.Graphics;
   const rectangle = new Graphics();
   rectangle
@@ -13,7 +13,7 @@ export function drawRectangle(x_c, y_c, width, height, fillColor) {
   return rectangle;
 }
 
-export function drawArrow(x_c, y_c, width, height, fillColor, sliderDirection) {
+function drawArrow(x_c, y_c, width, height, fillColor, sliderDirection) {
   let x1, y1;
   let x2, y2;
   let x3, y3;
@@ -43,7 +43,7 @@ export function drawArrow(x_c, y_c, width, height, fillColor, sliderDirection) {
   return arrow;
 }
 
-export function animateArrow1(stageArrowSprites, stage) {
+function animateArrow1(stageArrowSprites, stage) {
   stageArrowSprites.forEach((sprite, index) => {
     let currentSpritePosition = getCurrPositionFromSprite(sprite, stage, index);
     let currentSliderPosition = stage.listOfSliders[index].currPosition;
@@ -84,7 +84,7 @@ function getCurrPositionFromSprite(sprite, stage, indexOfSlider) {
   return result;
 }
 
-export function getSpritesFromGraphics(listOfGraphics, renderer) {
+function getSpritesFromGraphics(listOfGraphics, renderer) {
   let result = [];
   listOfGraphics.forEach((item) => {
 
@@ -97,15 +97,15 @@ export function getSpritesFromGraphics(listOfGraphics, renderer) {
   return result;
 }
 
-export function drawSetting(stageSettingItems, app_stage) {
+function drawSetting(stageSettingItems, app_stage) {
   stageSettingItems.forEach((item) => app_stage.addChild(item));
 }
 
-export function undrawSetting(stageSettingItems, app) {
+function undrawSetting(stageSettingItems, app) {
   stageSettingItems.forEach((item) => app.stage.removeChild(item));
 }
 
-export function drawArrowSprites(stageArrowSprites, stageArrowPositions, app_stage) {
+function drawArrowSprites(stageArrowSprites, stageArrowPositions, app_stage) {
   stageArrowSprites.forEach((item, index) => {
     app_stage.addChild(item);
     item.anchor.x = 0.5;
@@ -117,13 +117,13 @@ export function drawArrowSprites(stageArrowSprites, stageArrowPositions, app_sta
   });
 }
 
-export function undrawArrowSprites(stageArrowSprites, app) {
+function undrawArrowSprites(stageArrowSprites, app) {
   stageArrowSprites.forEach((item) => {
     app.stage.removeChild(item);
   });
 }
 
-export function getArrowPositions(stage) {
+function getArrowPositions(stage) {
   let result = [];
 
   stage.listOfSliders.forEach((slider, i) => {
@@ -138,7 +138,7 @@ export function getArrowPositions(stage) {
   return result;
 }
 
-export function generateStageSetting(stage) {
+function generateStageSetting(stage) {
   let result = [];
   let fillColor = 0x17179c;
 
@@ -155,7 +155,7 @@ export function generateStageSetting(stage) {
   return result;
 }
 
-export function generateStageArrows(stage) {
+function generateStageArrows(stage) {
   let result = [];
   let fillColor = 0x9c9c17;
 
@@ -203,17 +203,6 @@ export function startGame(game, stage_number, app) {
           console.log('you beat the entire game');
         }
 
-      }
-    });
-  });
-}
-
-export function defineCallbacks(stage, stageArrowSprites) {
-  stageArrowSprites.forEach((item, index) => {
-    item.on('pointerdown', function () {
-      stage.ExecuteTurn(index);
-      if (stage.IsWinning()) {
-        console.log('you win');
       }
     });
   });
