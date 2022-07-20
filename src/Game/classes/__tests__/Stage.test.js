@@ -1,5 +1,5 @@
-import { Stage } from '../classes/Stage.js';
-import { Slider } from '../classes/Slider.js';
+import { Stage } from '../Stage.js';
+import { Slider } from '../Slider.js';
 
 test('Stage Constructor Tests', () => {
   let listOfSliders = [new Slider(5, 3, true), new Slider(7, 1, true), new Slider(8, 2, false)];

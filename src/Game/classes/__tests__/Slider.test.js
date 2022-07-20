@@ -1,4 +1,4 @@
-import { Slider } from '../classes/Slider.js';
+import { Slider } from '../Slider.js';
 
 test('Slider Constructor Tests', () => {
   let sliderOne = new Slider(5, 3, true);
