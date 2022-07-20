@@ -162,7 +162,7 @@ function generateStageIntro(stageNumber) {
     fill: 0xFFFFFF,
     align: 'center'
   });
-  let stageIntroText = new PIXI.Text('Level ' + stageNumber.toString(), style);
+  let stageIntroText = new PIXI.Text('Stage ' + stageNumber.toString(), style);
   stageIntroText.x = heightPosition(margin_x);
   stageIntroText.y = widthPosition(0.02);
   return stageIntroText;
