@@ -1,8 +1,9 @@
 import { windowHeight, windowWidth, margin_y, margin_x, slider_padding } from './windowLayout';
+import { heightPosition, widthPosition } from './background';
 
 var PIXI = require('pixi.js');
 
-function drawRectangle(x_c, y_c, width, height, fillColor) {
+function generateRectangle(x_c, y_c, width, height, fillColor) {
   const Graphics = PIXI.Graphics;
   const rectangle = new Graphics();
   rectangle
@@ -148,12 +149,34 @@ function generateStageSetting(stage) {
     let width = (2 / ((stage.numberOfSliders + 1) * 2 + 4)) * windowWidth;
     let height = ((1 - 2 * margin_y) - 2 * slider_padding) * windowHeight;
 
-    let rectangle = drawRectangle(x_c, y_c, width, height, fillColor);
+    let rectangle = generateRectangle(x_c, y_c, width, height, fillColor);
     result.push(rectangle);
   });
 
   return result;
 }
+
+function generateStageIntro(stageNumber) {
+  let style = new PIXI.TextStyle({
+    fontSize: 20,
+    fill: 0xFFFFFF,
+    align: 'center'
+  });
+  let stageIntroText = new PIXI.Text('Level ' + stageNumber.toString(), style);
+  stageIntroText.x = heightPosition(margin_x);
+  stageIntroText.y = widthPosition(0.02);
+  return stageIntroText;
+}
+
+function drawStageIntro(stageIntroText, app_stage) {
+  app_stage.addChild(stageIntroText);
+}
+
+
+function undrawStageIntro(stageIntroText, app_stage) {
+  app_stage.removeChild(stageIntroText);
+}
+
 
 function generateStageArrows(stage) {
   let result = [];
@@ -181,6 +204,9 @@ export function startGame(game, stage_number, app) {
   let stageArrowPositions = getArrowPositions(stage);
   let stageArrowSprites = getSpritesFromGraphics(stageArrowItems, app.renderer);
 
+  let stageIntroText = generateStageIntro(stage_number + 1);
+  drawStageIntro(stageIntroText, app.stage);
+
   drawArrowSprites(stageArrowSprites, stageArrowPositions, app.stage);
 
   // add animation to sprites
@@ -196,6 +222,8 @@ export function startGame(game, stage_number, app) {
         console.log('you beat stage ' + (stage_number + 1));
         undrawSetting(stageSettingItems, app);
         undrawArrowSprites(stageArrowSprites, app);
+        undrawStageIntro(stageIntroText, app.stage);
+
         if ((stage_number + 1) < game.listOfStages.length) {
           startGame(game, stage_number + 1, app);
         }
