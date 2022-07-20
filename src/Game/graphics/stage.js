@@ -42,28 +42,28 @@ export function drawArrow(x_c, y_c, width, height, fillColor, sliderDirection) {
 }
 
 export function animateArrow1(stageArrowSprites, stage) {
-  stageArrowSprites.forEach((item, index) => {
-    let currentSpritePosition = getCurrPositionFromSprite(item, stage, index);
+  stageArrowSprites.forEach((sprite, index) => {
+    let currentSpritePosition = getCurrPositionFromSprite(sprite, stage, index);
     let currentSliderPosition = stage.listOfSliders[index].currPosition;
 
     if (currentSpritePosition != currentSliderPosition) {
       let new_y_c = getArrowPositions(stage)[index][1];
 
-      if (item.position.y < new_y_c) {
-        item.position.y += 3;
-        if (item.position.y >= new_y_c) {
-          item.position.y = new_y_c;
+      if (sprite.position.y < new_y_c) {
+        sprite.position.y += 3;
+        if (sprite.position.y >= new_y_c) {
+          sprite.position.y = new_y_c;
           if (stage.listOfSliders[index].currPosition == 1) {
-            item.rotation += 3.14159;
+            sprite.rotation += 3.14159;
           }
         }
       }
-      if (item.position.y > new_y_c) {
-        item.position.y -= 3;
-        if (item.position.y <= new_y_c) {
-          item.position.y = new_y_c;
+      if (sprite.position.y > new_y_c) {
+        sprite.position.y -= 3;
+        if (sprite.position.y <= new_y_c) {
+          sprite.position.y = new_y_c;
           if (stage.listOfSliders[index].currPosition == stage.listOfSliders[index].height) {
-            item.rotation += 3.14159;
+            sprite.rotation += 3.14159;
           }
         }
       }
