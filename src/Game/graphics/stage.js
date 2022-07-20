@@ -38,6 +38,8 @@ export function drawArrow(x_c, y_c, width, height, fillColor, sliderDirection) {
     .drawPolygon([x1, y1, x2, y2, x3, y3, x4, y4])
     .endFill();
 
+  arrow.direction = sliderDirection;
+
   return arrow;
 }
 
@@ -53,7 +55,8 @@ export function animateArrow1(stageArrowSprites, stage) {
         sprite.position.y += 3;
         if (sprite.position.y >= new_y_c) {
           sprite.position.y = new_y_c;
-          if (stage.listOfSliders[index].currPosition == 1) {
+          if (stage.listOfSliders[index].direction != sprite.direction) {
+            sprite.direction = stage.listOfSliders[index].direction;
             sprite.rotation += 3.14159;
           }
         }
@@ -62,7 +65,8 @@ export function animateArrow1(stageArrowSprites, stage) {
         sprite.position.y -= 3;
         if (sprite.position.y <= new_y_c) {
           sprite.position.y = new_y_c;
-          if (stage.listOfSliders[index].currPosition == stage.listOfSliders[index].height) {
+          if (stage.listOfSliders[index].direction != sprite.direction) {
+            sprite.direction = stage.listOfSliders[index].direction;
             sprite.rotation += 3.14159;
           }
         }
@@ -86,6 +90,7 @@ export function getSpritesFromGraphics(listOfGraphics, renderer) {
 
     let texture = renderer.generateTexture(item);
     let sprite = new PIXI.Sprite(texture);
+    sprite.direction = item.direction;
 
     result.push(sprite);
   });
