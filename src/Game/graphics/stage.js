@@ -14,7 +14,7 @@ function generateRectangle(x_c, y_c, width, height, fillColor) {
     .lineTo(x_c + width / 2, y_c - height / 2)
     .lineTo(x_c + width / 2, y_c + height / 2)
     .lineTo(x_c - width / 2, y_c + height / 2)
-    .lineTo(x_c - width / 2, y_c - height / 2)
+    .lineTo(x_c - width / 2, y_c - height / 2);
 
   return rectangle;
 }
