@@ -52,7 +52,7 @@ export function animateArrow1(stageArrowSprites, stage) {
       let new_y_c = getArrowPositions(stage)[index][1];
 
       if (sprite.position.y < new_y_c) {
-        sprite.position.y += 3;
+        sprite.position.y += 5;
         if (sprite.position.y >= new_y_c) {
           sprite.position.y = new_y_c;
           if (stage.listOfSliders[index].direction != sprite.direction) {
@@ -62,7 +62,7 @@ export function animateArrow1(stageArrowSprites, stage) {
         }
       }
       if (sprite.position.y > new_y_c) {
-        sprite.position.y -= 3;
+        sprite.position.y -= 5;
         if (sprite.position.y <= new_y_c) {
           sprite.position.y = new_y_c;
           if (stage.listOfSliders[index].direction != sprite.direction) {
