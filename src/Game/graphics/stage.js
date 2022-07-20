@@ -5,11 +5,16 @@ var PIXI = require('pixi.js');
 
 function generateRectangle(x_c, y_c, width, height, fillColor) {
   const Graphics = PIXI.Graphics;
+
+  let line_color = 0x1a1ab2;
+  let line_width = 2;
   const rectangle = new Graphics();
-  rectangle
-    .beginFill(fillColor)
-    .drawRoundedRect(x_c - width / 2, y_c - height / 2, width, height, 20)
-    .endFill();
+  rectangle.lineStyle(line_width, line_color, 5)
+    .moveTo(x_c - width / 2, y_c - height / 2)
+    .lineTo(x_c + width / 2, y_c - height / 2)
+    .lineTo(x_c + width / 2, y_c + height / 2)
+    .lineTo(x_c - width / 2, y_c + height / 2)
+    .lineTo(x_c - width / 2, y_c - height / 2)
 
   return rectangle;
 }
