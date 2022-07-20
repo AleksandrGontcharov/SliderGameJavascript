@@ -164,7 +164,7 @@ function generateStageSetting(stage) {
 function generateStageIntro(stageNumber) {
   let style = new PIXI.TextStyle({
     fontSize: 20,
-    fill: 0xFFFFFF,
+    fill: 0xB2BEB5,
     align: 'center'
   });
   let stageIntroText = new PIXI.Text('Stage ' + stageNumber.toString(), style);
