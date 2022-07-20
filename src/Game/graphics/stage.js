@@ -6,7 +6,7 @@ var PIXI = require('pixi.js');
 function generateRectangle(x_c, y_c, width, height, fillColor) {
   const Graphics = PIXI.Graphics;
 
-  let line_color = 0x1a1ab2;
+  let line_color = fillColor;
   let line_width = 2;
   const rectangle = new Graphics();
   rectangle.lineStyle(line_width, line_color, 5)
@@ -146,7 +146,7 @@ function getArrowPositions(stage) {
 
 function generateStageSetting(stage) {
   let result = [];
-  let fillColor = 0x17179c;
+  let fillColor = 0x1a1ab2;
 
   stage.listOfSliders.forEach((_, i) => {
     let x_c = (margin_x + ((1 - 2 * margin_x) / (stage.numberOfSliders + 1)) * (i + 1)) * windowWidth;
