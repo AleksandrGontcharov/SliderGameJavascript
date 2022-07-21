@@ -161,7 +161,7 @@ function generateStageSetting(stage) {
   return result;
 }
 
-function generateStageIntro(stageNumber) {
+function generateGameInfo(stageNumber) {
   let style = new PIXI.TextStyle({
     fontSize: 20,
     fill: 0xB2BEB5,
@@ -173,14 +173,38 @@ function generateStageIntro(stageNumber) {
   return stageIntroText;
 }
 
-function drawStageIntro(stageIntroText, app_stage) {
+function drawGameInfo(stageIntroText, app_stage) {
   app_stage.addChild(stageIntroText);
 }
 
 
+function undrawGameInfo(stageIntroText, app_stage) {
+  app_stage.removeChild(stageIntroText);
+}
+
+
+function generateStageIntro(stageNumber) {
+  let style = new PIXI.TextStyle({
+    fontSize: 50,
+    fill: 0xB2BEB5,
+    align: 'center'
+  });
+  let stageIntroText = new PIXI.Text('Stage ' + stageNumber.toString(), style);
+  stageIntroText.x = widthPosition(0.5);
+  stageIntroText.y = heightPosition(0.5);
+  stageIntroText.anchor.x = 0.5;
+  stageIntroText.anchor.y = 0.5;
+  return stageIntroText;
+}
+
+function drawStageIntro(stageIntroText, app_stage) {
+  app_stage.addChild(stageIntroText);
+}
+
 function undrawStageIntro(stageIntroText, app_stage) {
   app_stage.removeChild(stageIntroText);
 }
+
 
 
 function generateStageArrows(stage) {
@@ -200,6 +224,16 @@ function generateStageArrows(stage) {
   return result;
 }
 
+export function levelIntro(game, stage_number, app) {
+
+  let stageIntroText = generateStageIntro(stage_number + 1);
+  drawStageIntro(stageIntroText, app.stage);
+  setTimeout(function () {
+    undrawStageIntro(stageIntroText, app.stage);
+    startGame(game, stage_number, app);
+  }, 2000);
+}
+
 export function startGame(game, stage_number, app) {
   let stage = game.listOfStages[stage_number];
   let stageSettingItems = generateStageSetting(stage);
@@ -209,8 +243,8 @@ export function startGame(game, stage_number, app) {
   let stageArrowPositions = getArrowPositions(stage);
   let stageArrowSprites = getSpritesFromGraphics(stageArrowItems, app.renderer);
 
-  let stageIntroText = generateStageIntro(stage_number + 1);
-  drawStageIntro(stageIntroText, app.stage);
+  let gameInfoText = generateGameInfo(stage_number + 1);
+  drawGameInfo(gameInfoText, app.stage);
 
   drawArrowSprites(stageArrowSprites, stageArrowPositions, app.stage);
 
@@ -227,10 +261,10 @@ export function startGame(game, stage_number, app) {
         console.log('you beat stage ' + (stage_number + 1));
         undrawSetting(stageSettingItems, app);
         undrawArrowSprites(stageArrowSprites, app);
-        undrawStageIntro(stageIntroText, app.stage);
+        undrawGameInfo(gameInfoText, app.stage);
 
         if ((stage_number + 1) < game.listOfStages.length) {
-          startGame(game, stage_number + 1, app);
+          levelIntro(game, stage_number + 1, app);
         }
         else {
           console.log('you beat the entire game');

@@ -3,7 +3,7 @@ const { Slider } = require('./Game/classes/Slider');
 const { Stage } = require('./Game/classes/Stage');
 import { drawBackground } from './Game/graphics/background';
 import { windowHeight, windowWidth } from './Game/graphics/windowLayout';
-import { startGame } from './Game/graphics/stage';
+import { levelIntro, startGame } from './Game/graphics/stage';
 import { Game } from './Game/classes/Game';
 
 
@@ -54,4 +54,5 @@ let game = new Game(listOfStages);
 
 // Begin game
 
-startGame(game, 0, app);
+// startGame(game, 0, app);
+levelIntro(game, 0, app);
