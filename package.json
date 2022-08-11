@@ -4,7 +4,6 @@
     "description": "A scaffold project for a Webpack based webapplication, without the overhead of specific libraries.",
     "main": "index.js",
     "scripts": {
-        "heroku-prebuild": "npm install --dev",
         "build": "npm run clean && npm run lint && npm run dist",
         "dist": "webpack --config webpack.prod.js",
         "test": "jest --watchAll",
@@ -42,6 +41,6 @@
         "eslint-plugin-jsx-a11y": "^6.6.0",
         "eslint-plugin-react": "^7.30.1",
         "eslint-plugin-react-hooks": "^4.6.0",
-        "jest": "^28.1.0",
+        "jest": "^28.1.0"
     }
 }
