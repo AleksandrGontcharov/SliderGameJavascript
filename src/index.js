@@ -1,6 +1,8 @@
 var PIXI = require('pixi.js');
 const { Slider } = require('./Game/classes/Slider');
 const { Stage } = require('./Game/classes/Stage');
+const express = require('express');
+const os = require('os');
 import { drawBackground } from './Game/graphics/background';
 import { windowHeight, windowWidth } from './Game/graphics/windowLayout';
 import { levelIntro } from './Game/graphics/stage';
@@ -14,6 +16,11 @@ const app = new Application({
   transparent: false,
   antialias: true
 });
+
+const port = process.env.PORT || 8080;
+app.listen(port, () => console.log(`Listening on port ${port}!`));
+
+app.use(express.static('dist'));
 
 app.renderer.backgroundColor = 0x060812;
 app.renderer.resize(windowWidth, windowHeight);
