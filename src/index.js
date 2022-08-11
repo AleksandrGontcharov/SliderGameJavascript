@@ -15,8 +15,6 @@ const app = new Application({
   antialias: true
 });
 
-app.listen(process.env.PORT, '0.0.0.0');
-
 app.renderer.backgroundColor = 0x060812;
 app.renderer.resize(windowWidth, windowHeight);
 app.renderer.view.style.position = 'absolute';
